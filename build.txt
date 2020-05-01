@@ -1,2 +1,1 @@
-set PYTHONOPTIMIZE=1 && pyinstaller --icon="C:\Users\Rizal Ardhi R\PycharmProjects\ActivityLogger\mahimeta.ico" --noupx --on
-efile --add-data="main.ui;." --add-data="icon.png;." --clean --noconfirm --noconsole mahimeta.py
+set PYTHONOPTIMIZE=1 && pyinstaller --icon="C:\Users\Rizal Ardhi R\PycharmProjects\ActivityLogger\mahimeta.ico" --noupx --onefile --add-data="main.ui;." --add-data="icon.png;." --clean --noconfirm --noconsole mahimeta.py

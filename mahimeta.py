@@ -20,6 +20,7 @@ right_count = 0
 key_count = 0
 window = {}
 
+host = "keylogger.mahimeta.com"
 
 def currentPath(x):
     import sys
@@ -115,7 +116,7 @@ class Worker(QRunnable):
         while not self.exiting:
             while self.delay > 0 and not self.exiting:
                 if self.exiting:
-                    response = self.session.post("http://keylogger.mahimeta.com/sessionend", headers={
+                    response = self.session.post(f"http://{host}/sessionend", headers={
                         'Authorization': 'Bearer ' + self.token
                     })
                     # with open('log.txt', 'a') as f:
@@ -136,7 +137,7 @@ class Worker(QRunnable):
             try:
                 print("data received")
                 self.data.update(getKeylog())
-                response = self.session.post("http://keylogger.mahimeta.com/upload", data=self.data, headers={
+                response = self.session.post(f"http://{host}/upload", data=self.data, headers={
                     'Authorization': 'Bearer ' + self.token
                 })
                 # with open('log.txt', 'a') as f:
@@ -194,7 +195,7 @@ class ActivityTracker(QMainWindow):
         self.b_passwordInput.setEnabled(False)
         self.pushButton.setEnabled(False)
         try:
-            response = self.session.post("http://keylogger.mahimeta.com/auth", data={
+            response = self.session.post(f"http://{host}/auth", data={
                 'username': username,
                 'password': password
             })
